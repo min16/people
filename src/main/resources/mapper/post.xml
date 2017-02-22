@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.handstudio.repository.PostRepository">
+
+	<insert id="create">
+		INSERT INTO
+			post
+			(title, content, category, user_name)
+		VALUES
+			(#{title}, #{content}, #{category}, #{userName})
+	</insert>
+	
+	<select id="countPosts" resultType="integer">
+		SELECT
+			count(*)
+		FROM
+			post
+			<trim prefix="WHERE" prefixOverrides="AND |OR ">
+				<if test="category != 'all'">
+				 	category = #{category}
+				</if>
+				<if test="queryType == 'all' and query != ''">
+					AND (title LIKE '%${query}%' OR content LIKE '%${query}%' OR user_name LIKE '%${query}%')
+				</if>
+				<if test="queryType == 'title' and query != ''">
+					AND title LIKE '%${query}%'
+				</if>
+				<if test="queryType == 'userName' and query != ''">
+					AND user_name LIKE '%${query}%'
+				</if>
+				<if test="queryType == 'content' and query != ''">
+					AND content LIKE '%${query}%'
+				</if>
+			</trim>
+	</select>
+	
+	<select id="findByCategory" resultType="com.handstudio.model.Post">
+		SELECT	
+			no, title, content, convert_tz(reg_date, '+00:00', '+9:00') as reg_date, user_name, convert_tz(update_date, '+00:00', '+9:00') as update_date, category
+		FROM
+			post
+		WHERE 
+			category = #{category}
+		ORDER BY 
+			no ASC
+	</select>
+	
+	<select id="findAllByMap" resultType="com.handstudio.model.Post"  parameterType="java.util.Map"  >
+		SELECT 
+			no, title, convert_tz(reg_date, '+00:00', '+9:00') as reg_date, user_name, page_view, category
+		FROM
+			post
+			<trim prefix="WHERE" prefixOverrides="AND |OR ">
+				<if test="category != 'all'">
+				 	category = #{category}
+				</if>
+				<if test="queryType == 'all' and query != ''">
+					AND (title LIKE '%${query}%' OR content LIKE '%${query}%' OR user_name LIKE '%${query}%')
+				</if>
+				<if test="queryType == 'title' and query != ''">
+					AND title LIKE '%${query}%'
+				</if>
+				<if test="queryType == 'userName' and query != ''">
+					AND user_name LIKE '%${query}%'
+				</if>
+				<if test="queryType == 'content' and query != ''">
+					AND content LIKE '%${query}%'
+				</if>
+			</trim>
+		ORDER BY 
+			no DESC 
+		LIMIT
+			#{pageOffset}, 10 
+	</select>
+	
+	<select id="findPostForNav" resultType="com.handstudio.model.Post">
+		SELECT
+			no, title, category
+		FROM
+			post
+		WHERE 
+			category = #{category} 
+		ORDER BY
+			no ASC
+	</select>
+	
+	<select id="findByNo" resultType="com.handstudio.model.Post">
+		SELECT 
+			no, title, content, convert_tz(reg_date, '+00:00', '+9:00') as reg_date, user_name, convert_tz(update_date, '+00:00', '+9:00') as update_date, category
+		FROM
+			post
+		WHERE no = #{no}
+	</select>
+	
+	<update id="increasePageView">
+		UPDATE 
+			post
+		SET 
+			page_view = page_view + 1
+		WHERE no = #{no}
+	</update>
+	
+	<update id="update">
+		UPDATE
+			post
+		SET
+			title = #{title}, content = #{content}, category = #{category}, update_date = NOW()
+		WHERE no = #{no}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM
+			post
+		WHERE
+			no = #{no};
+	</delete>
+</mapper> 

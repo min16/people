@@ -1,0 +1,62 @@
+.list{
+	cursor: pointer;
+	font-weight: bold;	
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+.list a {
+	padding: 10px;
+	font-size: 15px;
+}
+
+.post{
+	padding-top: 20px;
+}
+
+.title p{
+	margin-left: 10px;
+}
+.content {
+	margin-top: 20px;
+	border: 1px solid #c0c0c0;
+	padding: 20px;
+	border-radius: 12px;
+}
+
+.button {
+	margin-top: 10px;
+	overflow: hidden;
+}
+
+.button input{
+	float: right;
+	width: 100px;
+	margin-right: 10px;
+}
+
+.write-btn {
+	top: 18%;
+	right: 3%;
+	width: 100px;
+}
+
+@media(max-width:768px) { 
+	
+	.list a {
+		line-height: 33px;
+		font-size: 13px;
+	}
+	.post {
+		padding-top: 5px;
+	}
+	.title h2{
+		font-size: 24px;
+	}
+	.title .web{
+		display: none;
+	}
+	.button input{
+		width: 80px;
+	}
+}

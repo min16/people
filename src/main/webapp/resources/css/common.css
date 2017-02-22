@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+
+html,body {padding: 0; margin: 0 auto; min-width: 300px; max-width: 1920px;}
+a {color: inherit ; text-decoration: none !important;}
+ul {padding: 0; margin: 0; list-style: none;}
+
+body header {max-width: 1940px; margin: 0 auto;}
+body header > .head {text-align: left; margin: 0 auto; position: relative; padding: 20px 30px 0px 30px;}
+body header > .head .logo {font-size: 50px; font-weight: bold;}
+body header > .head .logo a{color: inherit;} 
+body header > .head .logo a img{width: 215px;}
+body .container {margin-top: 30px;}
+body .container-fluid {margin-top: 30px;}
+
+body nav .mobile-menu {cursor: pointer; visibility: hidden; background-color: #333; color: white; padding: 15px;}
+body nav .mobile-menu span {font-size: 17px; color: white;}
+
+body nav .menus {background-color: #333; color: white;}
+body nav .menus:after {clear: both; display: block; content:'';}
+body nav .menus.on {display:block; visibility: visible; opacity: 1; color: white;}
+body nav .menus .item {float: left;}
+body nav .menus .item span {margin-left: 10px; margin-right: 10px;}
+body nav .menus .item:hover {background-color: #3f3f3f;}
+body nav .menus .item > div a {display: inline-block; padding: 20px; color: white;}
+body nav .menus .item .list {display: none; background-color: #3f3f3f; z-index: 999; position: absolute; width:200px;}
+body nav .menus .item .list li:hover {background-color: #4f4f4f;}
+body nav .menus .item .list li a {color: inherit; display: block; padding: 10px 20px 10px 20px;}
+body nav .menus .admin {float: right !important; font-weight: bold; font-size: 14px; padding: 20px;}
+
+body footer {width:100%; bottom: 0; position: relative; margin-top: 50px;}
+body footer .wrapper {color: white; background-color: #333; padding: 15px 0px 15px 0px; text-align: center;}
+body footer .wrapper p {text-align: center; margin:0;}
+
+@media(max-width:768px) { 
+	body header .head {text-align: center;}
+	body header .head .logo {margin-bottom: 15px;}
+	
+	body nav .mobile-menu {display: block; visibility: visible; text-align: center;}
+	
+	body nav .menus {display: none;}
+	body nav .menus .item {position: relative; width: 100%;}
+	body nav .menus .item.clicked {background-color: #3f3f3f;}
+	body nav .menus .item > div {margin-left: 10px;}
+	body nav .menus .item > div a {display: block; padding: 20px;}
+	body nav .menus .item > div .caret {display: none;}
+	body nav .menus .item .list {width: 100%; position: relative;}
+}

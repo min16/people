@@ -1,0 +1,10 @@
+body .container .title h2 {margin-bottom: 0;}
+body .container .title p {margin: 5px; color: #666666;}
+body .container .content img{width: 100%;}
+body .container .button {margin-top: 40px;}
+body .container .button .admin {width: 65px;}
+body .container .button .goBack {width: 100px; float: right; margin-left: 10px;}
+
+@media(max-width:768px) { 
+	body .container {margin-left: 20px;}	
+}

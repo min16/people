@@ -1,0 +1,8 @@
+body .container-fluid {max-width: 1940px; margin: 0 auto; position: relative;}
+body .container-fluid .content {margin: 50px 40px 0px 35px;}
+body .container-fluid .content:after {clear: both;}
+body .container-fluid .content h1 {margin-bottom: 40px;}
+body .container-fluid .content .title h2 {margin-bottom: 0; color: #1e73be; display: inline-block;}
+body .container-fluid .content .title h2:hover {color: #333;}
+body .container-fluid .content .title p {margin: 5px;}
+body .container-fluid .content hr {border: none !important; height: 1px; color: gray; background-color: gray;}
